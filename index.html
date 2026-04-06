@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>3D Watch Collector - Ultimate Showroom</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            font-family: 'Segoe UI', 'Poppins', system-ui, -apple-system, sans-serif;
+        }
+        
+        /* UI Overlay */
+        #ui {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            z-index: 100;
+            pointer-events: none;
+        }
+        
+        .watch-card {
+            position: absolute;
+            bottom: 30px;
+            left: 20px;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 15px;
+            border-left: 4px solid gold;
+            font-family: monospace;
+            pointer-events: none;
+            z-index: 100;
+            font-size: 14px;
+        }
+        
+        .controls-panel {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(10px);
+            padding: 12px 20px;
+            border-radius: 30px;
+            color: white;
+            font-size: 12px;
+            font-family: monospace;
+            pointer-events: none;
+            z-index: 100;
+            display: flex;
+            gap: 15px;
+        }
+        
+        button {
+            pointer-events: auto;
+            background: gold;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.2s;
+        }
+        
+        button:hover {
+            transform: scale(1.05);
+        }
+        
+        #voice-status {
+            position: absolute;
+            bottom: 100px;
+            left: 20px;
+            background: rgba(0,0,0,0.6);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            color: #0f0;
+            font-family: monospace;
+            pointer-events: none;
+        }
+        
+        @media (max-width: 768px) {
+            .watch-card { font-size: 10px; padding: 8px 15px; }
+            .controls-panel { font-size: 8px; padding: 8px 12px; }
+        }
+    </style>
+</head>
+<body>
+    <div id="ui">
+        <div class="controls-panel">
+            🖱️ Drag to rotate | 📜 Scroll to zoom | 🎤 Say "next watch" or "Rolex"
+        </div>
+    </div>
+    <div class="watch-card" id="watch-info">
+        🕐 LOADING 3D WATCHES...
+    </div>
+    <div id="voice-status">
+        🎤 Voice ready: Say "next", "previous", or a brand name
+    </div>
+    
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+            }
+        }
+    </script>
+    
+    <script type="module" src="main.js"></script>
+</body>
+</html>
